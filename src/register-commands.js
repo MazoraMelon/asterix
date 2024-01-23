@@ -1,13 +1,21 @@
 require("dotenv").config();
-const { REST, Routes } = require('discord.js');
+const { REST, Routes, ApplicationCommandOptionType } = require('discord.js');
 
 const commands = [
     {
-        name: "Hey",
-        description: "Reply with hey"
+        name: "order",
+        description: "Creates an order chat with the devs of Undersea"
     },
+    {
+        name: "close",
+        description: "Close your order chat with the devs of Undersea"
+    },
+    {
+        name: "developer",
+        description: "Add a developer of a type to the cat"
+    }
 ];
-
+console.log("Nice")
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 (async () => {
