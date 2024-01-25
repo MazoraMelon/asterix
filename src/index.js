@@ -13,6 +13,22 @@ const client = new Client({
 	
 });
 
+function generateToken() {
+    let stringVars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567980';
+    let token = '';
+  
+    for (let i = 0; i < 5; i++) {
+      let randomIndex = Math.floor(Math.random() * stringVars.length);
+      token += stringVars[randomIndex];
+    }
+
+    console.log(token)
+    return token;
+  }
+  
+
+
+
 client.once(Events.ClientReady, readyClient => {
 	console.log(`${readyClient.user.tag} is online!`);
 });
@@ -100,9 +116,78 @@ client.on("interactionCreate", async (interaction) => {
         }
     }
 });
-//ADD DEVELOPER-----------------------------------------------------------------
+
+
+
+
+
+//SUPABASE--------------------------------------------------------------------------------
+
+const { createClient } = require('@supabase/supabase-js');
+const supabaseUrl = 'https://rvydqlglkydpzfqhodsl.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+
+//CHARGE CUSTOMER-----------------------------------------------------------------
 client.on("interactionCreate", async (interaction) => {
-    
-})
+    if (interaction.isCommand()) {
+        const { commandName } = interaction;
+
+        switch (commandName) {
+            case "charge":
+
+                let user = "mazora_";
+
+                // Check if the user already exists in the 'customers' table
+                const existingUserData = await supabase
+                    .from('customers')
+                    .select('*')
+                    .eq('discordid', user);
+
+                if (existingUserData.error) {
+                    console.error('Supabase Select Error:', existingUserData.error.message);
+                    return;
+                }
+
+                if (existingUserData.data && existingUserData.data.length > 0) {
+                    // User already exists, handle accordingly
+                    console.log('User already exists in the table:', existingUserData.data);
+                    console.log(existingUserData.data[0].token);
+                    let token = existingUserData.data[0].token;
+                    // Check if the first letter of the token is an underscore
+                    if (token.startsWith('_')) {
+
+                        token = token.slice(1); // Remove the underscore
+                        await interaction.user.send(`Put this token into the payment to pay! ||${token}|| https://www.roblox.com/games/16078251436/Admire-Pay`);
+                        await interaction.reply(` The user has recieved their payment token, please do not share it! :)`);
+                    } else {
+                        await interaction.reply(`Your account has been linked so this should be easy! Enter this game as: **${token}**! https://www.roblox.com/games/16078251436/Admire-Pay`);
+                    }
+                } else {
+                    // User doesn't exist, insert the new data
+
+                    let token = generateToken();
+                    await interaction.user.send(`Your account token is ||${token}|| put this into the game to pay! https://www.roblox.com/games/16078251436/Admire-Pay`);
+                    await interaction.reply(` The customer for this order has recieved a DM of their token, please do not share it! :) https://www.roblox.com/games/16078251436/Admire-Pay`);
+                    
+
+                    const insert = await supabase
+                        .from('customers')
+                        .insert([{ discordid: user, token: ("_" + token) }])
+                        .select();
+
+                    if (insert.error) {
+                        console.error('Supabase Insert Error:', insert.error.message);
+                    } else {
+                        console.log('Supabase Insert Success:', insert.data);
+                    }
+                }
+                break;
+        }
+    }
+});
+
+
 
 client.login(process.env.TOKEN);

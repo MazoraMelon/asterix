@@ -13,6 +13,10 @@ const commands = [
     {
         name: "developer",
         description: "Add a developer of a type to the cat"
+    },
+    {
+        name: "charge",
+        description: "Charge the customer for the current order"
     }
 ];
 console.log("Nice")

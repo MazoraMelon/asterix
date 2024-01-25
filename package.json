@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/MazoraMelon/asterix#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1"
   }
