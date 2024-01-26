@@ -1,0 +1,68 @@
+2024-01-25T18:40:54.639Z - Bot Started up!
+2024-01-25T18:41:10.767Z - Bot Started up!
+2024-01-25T18:41:41.894Z - Bot Started up!
+2024-01-25T18:43:18.178Z - Bot Started up!
+2024-01-25T18:47:09.857Z - Bot Started up!
+2024-01-25T18:49:15.323Z - Bot Started up!
+2024-01-25T18:49:50.792Z - Bot Started up!
+2024-01-25T18:50:06.549Z - mazora_ created the order #63 	 Channel ID: 1200150613988749483 
+2024-01-25T18:50:35.473Z - mazora_ created the order #64 	 Channel ID: 1200150735887806535 
+2024-01-25T18:52:30.430Z - Bot Started up!
+2024-01-25T18:52:35.264Z - mazora_ created the order #65 	 Channel ID: 1200151239111999609 
+2024-01-25T18:54:14.157Z - Bot Started up!
+2024-01-25T18:54:51.931Z - tomextraz created the order #66 	 Channel ID: 1200151813169610864 
+2024-01-25T18:58:12.373Z - mazora_ created the order #67 	 Channel ID: 1200152654668648578 
+2024-01-25T18:58:32.740Z - Bot Started up!
+2024-01-25T18:58:43.939Z - mazora_ created the order #68 	 Channel ID: 1200152786353004645 
+2024-01-25T18:59:18.397Z - mazora_ created the order #69 	 Channel ID: 1200152928988713142 
+2024-01-25T18:59:32.758Z - Bot Started up!
+2024-01-25T18:59:37.531Z - mazora_ created the order #70 	 Channel ID: 1200153010500816986 
+2024-01-25T19:01:18.094Z - Bot Started up!
+2024-01-25T19:02:32.998Z - tomextraz created the order #71 	 Channel ID: 1200153745556766881 
+2024-01-25T19:03:01.034Z - Bot Started up!
+2024-01-25T19:03:09.972Z - tomextraz created the order #72 	 Channel ID: 1200153900947349555 
+2024-01-25T19:03:41.253Z - Bot Started up!
+2024-01-25T19:04:04.558Z - Bot Started up!
+2024-01-25T19:04:07.727Z - Bot Started up!
+2024-01-25T19:04:30.713Z - Bot Started up!
+2024-01-25T19:05:42.013Z - Bot Started up!
+2024-01-25T19:06:10.194Z - Bot Started up!
+2024-01-25T19:06:30.281Z - Bot Started up!
+2024-01-25T19:08:11.631Z - Bot Started up!
+2024-01-25T19:08:17.972Z - mazora_ created the order #73 	 Channel ID: 1200155189055869028 
+2024-01-25T19:08:58.433Z - Bot Started up!
+2024-01-25T19:09:57.523Z - Bot Started up!
+2024-01-25T19:10:16.286Z - Bot Started up!
+2024-01-25T19:10:53.956Z - Bot Started up!
+2024-01-25T19:13:11.204Z - Bot Started up!
+2024-01-25T19:14:41.157Z - Bot Started up!
+2024-01-25T19:15:51.627Z - Bot Started up!
+2024-01-25T19:15:59.134Z - mazora_ created the order #74 	 Channel ID: 1200157126434230292 
+2024-01-25T19:16:51.648Z - Bot Started up!
+2024-01-25T19:19:00.043Z - Bot Started up!
+2024-01-25T19:19:47.496Z - Bot Started up!
+2024-01-25T19:20:41.768Z - Bot Started up!
+2024-01-25T19:21:26.947Z - Bot Started up!
+2024-01-25T19:21:55.531Z - Bot Started up!
+2024-01-26T18:42:11.529Z - Bot Started up!
+2024-01-26T18:43:21.746Z - Bot Started up!
+2024-01-26T18:43:41.397Z - Bot Started up!
+2024-01-26T18:43:45.174Z - mazora_ created the order #75 	 Channel ID: 1200511407712649287 
+2024-01-26T18:45:58.129Z - Bot Started up!
+2024-01-26T18:47:22.114Z - Bot Started up!
+2024-01-26T18:48:03.305Z - Bot Started up!
+2024-01-26T18:50:03.400Z - Bot Started up!
+2024-01-26T18:50:27.379Z - Bot Started up!
+2024-01-26T18:51:44.868Z - Bot Started up!
+2024-01-26T18:53:06.336Z - Bot Started up!
+2024-01-26T18:53:32.481Z - matthewo46 used the create order command
+2024-01-26T18:53:39.002Z - matthewo46 created the order #76 	 Channel ID: 1200513897459888138 
+2024-01-26T18:55:44.160Z - Bot Started up!
+2024-01-26T18:56:39.962Z - Bot Started up!
+2024-01-26T18:56:56.317Z - Bot Started up!
+2024-01-26T18:57:14.886Z - Bot Started up!
+2024-01-26T18:58:16.001Z - Bot Started up!
+2024-01-26T18:59:18.187Z - Bot Started up!
+2024-01-26T18:59:44.422Z - Bot Started up!
+2024-01-26T18:59:58.024Z - Bot Started up!
+2024-01-26T19:00:45.260Z - Bot Started up!
