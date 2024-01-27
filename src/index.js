@@ -105,10 +105,10 @@ client.on("interactionCreate", async (interaction) => {
             await channel.permissionOverwrites.set([
                 {
                     id: interaction.guild.roles.everyone.id,
-                    deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel, PermissionsBitField.ManageChannels],
+                    deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
                 }, {
                     id: interaction.user.id,
-                    allow: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel, PermissionsBitField.ManageChannels],
+                    allow: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
                 },
             ]);
 
