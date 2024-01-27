@@ -189,7 +189,7 @@ client.on("interactionCreate", async (interaction) => {
         switch (commandName) {
             case "charge":
 
-            interaction.reply("This feature isn't availible just yet");
+            interaction.reply("This feature isn't ready just yet");
             break;
                 // Check the user roles
                 if (!interaction.member.roles.cache.some(role => role.name === "Founder")) {
