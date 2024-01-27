@@ -12,7 +12,7 @@ const commands = [
     },
     {
         name: "developer",
-        description: "Add a developer of a type to the cat"
+        description: "Add a developer of a type to the chat"
     },
     {
         name: "charge",
