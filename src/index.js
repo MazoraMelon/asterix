@@ -82,7 +82,7 @@ client.on("interactionCreate", interaction => {
 		const row = new ActionRowBuilder()
 			.addComponents(create);
 
-			interaction.reply({content: `Create an order`, components: [row]});
+			interaction.reply({content: `Want to make an order or buy an ad? Click here!`, components: [row]});
 			logToFile(`${interaction.user.username} used the create order command`)
 			break;
 
@@ -127,7 +127,6 @@ client.on("interactionCreate", async (interaction) => {
             let user = interaction.user.username;
             createOrderSupabase(channelID, user)
 
-            // After 3 seconds delete the channel
 
             break;
             
@@ -146,12 +145,12 @@ client.on("interactionCreate", async (interaction) => {
                 var userid = await findUserByChannelId(interaction.channelId);
                 // Perms
                 if (!interaction.member.roles.cache.some(role => role.name === "Developer")) {
-                    await interaction.reply("You do not have permission to use this command", { ephemeral: true });
+                    await interaction.reply({ content:"You do not have permission to use this command", ephemeral: true });
                     break;
                 }
 
                 if (!userid) {
-                    await interaction.reply("Command used in an invalid channel", { ephemeral: true });
+                    await interaction.reply({ content: "Command used in an invalid channel",  ephemeral: true });
                     break;
                 }
                 userid = await client.users.fetch(userid);
@@ -193,14 +192,14 @@ client.on("interactionCreate", async (interaction) => {
             break;
                 // Check the user roles
                 if (!interaction.member.roles.cache.some(role => role.name === "Founder")) {
-                    await interaction.reply("You do not have permission to use this command.", { ephemeral: true });
+                    await interaction.reply({ content: "You do not have permission to use this command.",  ephemeral: true });
                     break;
                 }
             // Check the channels user using src/storage/orders.json
             var userid = await findUserByChannelId(interaction.channelId);
 
             if (userid === null) {
-                await interaction.reply("This command was used in an invalid channel.", { ephemeral: true });
+                await interaction.reply({ content: "This command was used in an invalid channel.", ephemeral: true });
                 console.log("Null")
                 break;
             }

@@ -1,15 +1,7 @@
-2024-01-27T10:59:14.965Z - Bot Started up!
-2024-01-27T11:05:08.849Z - Bot Started up!
-2024-01-27T11:07:15.926Z - Bot Started up!
-2024-01-27T11:13:23.175Z - Bot Started up!
-2024-01-27T11:22:53.165Z - Bot Started up!
-2024-01-27T11:31:19.523Z - matthewo46 used the create order command
-2024-01-27T11:31:25.853Z - matthewo46 created the order #78 	 Channel ID: 1200764993126269049 
-2024-01-27T11:33:47.764Z - Bot Started up!
-2024-01-27T13:11:50.719Z - Bot Started up!
-2024-01-27T13:13:20.668Z - Bot Started up!
-2024-01-27T13:14:42.745Z - Bot Started up!
-2024-01-27T13:17:18.358Z - Bot Started up!
-2024-01-27T13:21:08.817Z - Bot Started up!
-2024-01-27T13:22:57.596Z - Bot Started up!
-2024-01-27T13:25:25.078Z - mazora_ used the create order command
+2024-01-27T13:47:34.787Z - Bot Started up!
+2024-01-27T13:49:45.915Z - Bot Started up!
+2024-01-27T14:22:37.155Z - mazora_ used the create order command
+2024-01-27T14:24:09.563Z - Bot Started up!
+2024-01-27T14:24:14.692Z - mazora_ used the create order command
+2024-01-27T14:24:14.723Z - mazora_ used the create order command
+2024-01-27T14:26:10.207Z - mazora_ created the order #79 	 Channel ID: 1200808965097918555 
