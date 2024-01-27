@@ -100,7 +100,7 @@ client.on("interactionCreate", async (interaction) => {
                 type: 0,
             });
 
-            await channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "orders"));
+            await channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Orders"));
 
             await channel.permissionOverwrites.set([
                 {
@@ -144,7 +144,7 @@ client.on("interactionCreate", async (interaction) => {
             case "close":
                 var userid = await findUserByChannelId(interaction.channelId);
                 // Perms
-                if (!interaction.member.roles.cache.some(role => role.name === "Founder")) {
+                if (!interaction.member.roles.cache.some(role => role.name === "Developer")) {
                     await interaction.reply("You do not have permission to use this command", { ephemeral: true });
                     break;
                 }
@@ -167,7 +167,7 @@ client.on("interactionCreate", async (interaction) => {
                     
                 ]);
                 await userid.send("Your order has been closed! Thanks for working with us!");
-                channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "archive"));
+                channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Archive"));
                 break;
 
 
@@ -187,6 +187,9 @@ client.on("interactionCreate", async (interaction) => {
 
         switch (commandName) {
             case "charge":
+
+            interaction.reply("This feature isn't availible just yet");
+            break;
                 // Check the user roles
                 if (!interaction.member.roles.cache.some(role => role.name === "Founder")) {
                     await interaction.reply("You do not have permission to use this command.", { ephemeral: true });
