@@ -1,7 +1,0 @@
-2024-01-27T13:47:34.787Z - Bot Started up!
-2024-01-27T13:49:45.915Z - Bot Started up!
-2024-01-27T14:22:37.155Z - mazora_ used the create order command
-2024-01-27T14:24:09.563Z - Bot Started up!
-2024-01-27T14:24:14.692Z - mazora_ used the create order command
-2024-01-27T14:24:14.723Z - mazora_ used the create order command
-2024-01-27T14:26:10.207Z - mazora_ created the order #79 	 Channel ID: 1200808965097918555 
