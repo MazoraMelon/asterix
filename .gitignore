@@ -2,3 +2,5 @@ node_modules
 .env
 src/storage/orders.json
 src/storage/log.txt
+src/storage/log.txt
+src/asterix

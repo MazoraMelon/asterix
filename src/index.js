@@ -3,6 +3,7 @@ const fs = require('fs');
 const { Client, Events, GatewayIntentBits, ButtonBuilder, ButtonStyle, SlashCommandBuilder, ActionRowBuilder, permissionOverwrites, PermissionsBitField } = require('discord.js');
 
 logToFile("Bot Started up!")
+console.log('Current working directory:', process.cwd());
 //SUPABASE--------------------------------------------------------------------------------
 const { createClient } = require('@supabase/supabase-js');
 const { log } = require('console');
