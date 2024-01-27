@@ -1,5 +1,4 @@
 node_modules
 .env
-src/log.txt
-src/orders.json
+src/storage/orders.json
 src/storage/log.txt
