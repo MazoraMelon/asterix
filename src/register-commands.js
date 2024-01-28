@@ -16,7 +16,19 @@ const commands = [
     },
     {
         name: "charge",
-        description: "Charge the customer for the current order"
+        description: "Charge the customer for the current order",
+        options: [
+            {
+                name: "amount",
+                description: "Amount of credits to charge",
+                type: ApplicationCommandOptionType.Number,
+                required: true
+            }
+        ]
+    },
+    {
+        name: "remove",
+        description: "Remove the order from the database"
     }
 ];
 console.log("Nice")

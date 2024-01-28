@@ -7,14 +7,43 @@ console.log('Current working directory:', process.cwd());
 //SUPABASE--------------------------------------------------------------------------------
 const { createClient } = require('@supabase/supabase-js');
 const { log } = require('console');
+const { channel } = require('diagnostics_channel');
 const supabaseUrl = 'https://rvydqlglkydpzfqhodsl.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 
+const developers = [
+    {
+        userId: '562685530790428692', // Replace with the actual Discord user ID
+        username: 'mazora_',
+        role: 'Scripter', // You can add additional information like roles
+    },
+    {
+        userId: '694054568417558541', // Replace with another Discord user ID
+        username: 'flippyy_',
+        role: 'Clothing',
+    },
+    {
+        userId: '993187573553954896', // Replace with another Discord user ID
+        username: 'ell1998123',
+        role: 'Livery',
+    },
+    {
+        userId: '1038480998876332122', // Replace with another Discord user ID
+        username: 'kylan_.',
+        role: 'Logo',
+    },
+    {
+        userId: '1114164984499421194', // Replace with another Discord user ID
+        username: 'tomextraz',
+        role: 'Modeler',
+    }
+];
+
+
 
 const client = new Client({
-	 
 	intents: 
 	[
 		GatewayIntentBits.Guilds,
@@ -37,7 +66,6 @@ function generateToken() {
     console.log(token)
     return token;
   }
-  
 
 async function createOrderSupabase(channel_id, customer) {
     var price = 0
@@ -62,7 +90,7 @@ async function createOrderSupabase(channel_id, customer) {
         console.log('Supabase Insert Success:', insert.data);
         logToFile(`${customer} created the order #${insert.data[0].id} \t Channel ID: ${channel_id} `)
     }
-    
+    return insert
 }
 
 client.once(Events.ClientReady, readyClient => {
@@ -88,7 +116,6 @@ client.on("interactionCreate", interaction => {
 
 	}
 })
-
 //CREATE ORDER--------------------------------------------------------------------------------------------------
 client.on("interactionCreate", async (interaction) => {
     if (!interaction.isButton()) return;
@@ -100,9 +127,15 @@ client.on("interactionCreate", async (interaction) => {
                 name: `order-${interaction.user.username}`,
                 type: 0,
             });
+            let channelID = channel.id;
+            let user = interaction.user.username;
+            let data = await createOrderSupabase(channelID, user);
+
+            channel.name = `#${data.data[0].id}-${interaction.user.username}`
 
             await channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Orders"));
 
+            let orderID = data.data[0].id;
             await channel.permissionOverwrites.set([
                 {
                     id: interaction.guild.roles.everyone.id,
@@ -116,22 +149,116 @@ client.on("interactionCreate", async (interaction) => {
             await interaction.reply({ content: `Thanks! Your order channel is ready! ${channel}`, ephemeral: true });
 
             // Add order to file
-            addOrderToFile(channel.id, interaction.user.username, interaction.user.id);
+            addOrderToFile(channel.id, interaction.user.username, interaction.user.id, orderID);
 
 
             // Send a message in the new order chat
             await channel.send({ content: `Hi there! ${interaction.user}. Thanks for making an order! Just so you know, I store data about this order on my database!` });
 
             // Add the user order to supabase
-            let channelID = channel.id;
-            let user = interaction.user.username;
-            createOrderSupabase(channelID, user)
 
-
+            //setupOrder(channel);
             break;
             
     }
 });
+
+//Message in order channel
+async function setupOrder(channel) {
+    const script = new ButtonBuilder()
+        .setCustomId('scriptbutton')
+        .setLabel('Script')
+        .setStyle(ButtonStyle.Primary);
+    const model = new ButtonBuilder()
+        .setCustomId('modelbutton')
+        .setLabel('Model')
+        .setStyle(ButtonStyle.Primary);
+    const clothing = new ButtonBuilder()
+        .setCustomId('clothingbutton')
+        .setLabel('Clothing')
+        .setStyle(ButtonStyle.Primary);
+    const livery = new ButtonBuilder()
+        .setCustomId('liverybutton')
+        .setLabel('Livery')
+        .setStyle(ButtonStyle.Primary);
+    const logo = new ButtonBuilder()
+        .setCustomId('logobutton')
+        .setLabel('Logo')
+        .setStyle(ButtonStyle.Primary);
+
+    // Limit the number of components in a single row
+    const row = new ActionRowBuilder()
+        .addComponents(script, model, clothing, livery, logo); // Adjust as needed
+
+    // Send a message in the channel
+    await channel.send({ content: 'What type of order is this?', components: [row] });
+    await channel.send("If you are looking for something else like an advert ignore this message")
+}
+// Check if they have been pressed
+client.on("interactionCreate", async (interaction) => {
+    // Check if the buttons from setup have been pressed
+    if (interaction.isButton()) {
+        const customId = interaction.customId;
+        let channel = interaction.channelId
+        switch (customId) {
+            case "scriptbutton":
+                // Name the channel "Script"
+                await interaction.channel.setName(`${interaction.user.username}-script`);
+                addDeveloper(interaction.channel, "Scripter");
+                break;
+            case "modelbutton":
+                await interaction.channel.setName(`${interaction.user.username}-model`); 
+                addDeveloper(interaction.channel, "Modeler");
+                break;
+            case "clothingbutton":
+                await interaction.channel.setName(`${interaction.user.username}-clothing`); 
+                addDeveloper(interaction.channel, "Clothing");
+                break;
+            case "liverybutton":
+                await interaction.channel.setName(`${interaction.user.username}-livery`); 
+                addDeveloper(interaction.channel, "Livery");
+                break;
+            case "logobutton":
+                await interaction.channel.setName(`${interaction.user.username}-logo`); 
+                addDeveloper(interaction.channel, "Logo");
+                break;
+            default:
+                break;
+        }
+    }
+});
+
+async function addDeveloper(channel, type) {
+    const developer = developers.find(dev => dev.role === type);
+    if (!developer) {
+        console.log(`No developer found with type ${type}`);
+        return;
+    }
+
+    console.log(`Adding ${developer.username} to ${channel.name}`);
+
+    try {
+        const developerDiscord = await client.users.fetch(developer.userId);
+        console.log(`Fetched user: ${developerDiscord.username} (${developerDiscord.id})`);
+        await channel.permissionOverwrites.edit([
+            {
+                id: developerDiscord,
+                allow: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
+            },
+        ]);
+        channel.send(`Hi ${developer.username}! You have been added to the ${type} channel!`);
+    } catch (error) {
+        console.error('Error fetching user:', error);
+    }
+}
+
+
+// Find out order type
+
+
+
+
+
 
 //ORDER CLOSE----------------------------------------------------------------------------------------------------
 client.on("interactionCreate", async (interaction) => {
@@ -282,7 +409,7 @@ function readOrdersFromFile() {
     }
 }
 function writeOrdersToFile(orders) {
-    fs.writeFile('src/storage/orders.json', JSON.stringify(orders, null, 3), 'utf8', (err) => {
+    fs.writeFile('src/storage/orders.json', JSON.stringify(orders, null, 4), 'utf8', (err) => {
         if (err) {
             console.error('Error writing orders file:', err);
         } else {
@@ -290,10 +417,10 @@ function writeOrdersToFile(orders) {
         }
     });
 }
-function addOrderToFile(channel_id, user, user_id) {
+function addOrderToFile(channel_id, user, user_id, order_id) {
     const orders = readOrdersFromFile();
 
-    const newOrder = { channel_id, user, user_id };
+    const newOrder = { channel_id, user, user_id, order_id };
     orders.push(newOrder);
 
     writeOrdersToFile(orders);
@@ -304,6 +431,60 @@ function findUserByChannelId(channel_id) {
     const order = orders.find(order => order.channel_id === channel_id);
     return order ? order.user_id : null;
 }
+function findOrderIDByChannelId(channel_id) {
+    const orders = readOrdersFromFile();
+    const order = orders.find(order => order.channel_id === channel_id);
+    return order ? order.order_id : null;
+}
+
+// Remove from database command
+client.on('interactionCreate', async interaction => {
+    if (interaction.isCommand()) {
+        const { commandName } = interaction;
+    switch (commandName) {
+        case 'remove':
+
+            const username = "mazora_"; // Replace with the actual username
+
+            // Check if the user executing the command is "mazora_"
+            if (interaction.user.username !== username) {
+                await interaction.reply({ content: 'You are not authorized to use this command.', ephemeral: true });
+                return; // Exit the function if the user is not "mazora_"
+            }
+
+            console.log(`Removing order from ${interaction.channelId}`);
+        const channel_id = interaction.channelId;
+        const orderID = findOrderIDByChannelId(channel_id);
+        interaction.reply({ content: 'Order removing', ephemeral: true });
+        // Delete from supabase
+        const deleteOrder = await supabase
+            .from('orders')
+            .delete()
+            .eq('id', orderID)
+            .select();
+
+        if (deleteOrder.error) {
+            console.error('Supabase Delete Error:', deleteOrder.error.message);
+        } else {
+            console.log('Supabase Delete Success:', deleteOrder.data);
+        }}}});
 
 
 client.login(process.env.TOKEN);
+
+async function deleteOrdersWithProduct() {
+    // Get all orders with the product "-----"
+    const { data, error } = await supabase
+        .from('orders')
+        .delete()
+        .match({ product: '-----' });
+
+    if (error) {
+        console.error('Supabase Delete Error:', error.message);
+    } else {
+        console.log('Supabase Delete Success:', data);
+    }
+}
+
+// Call the function to delete orders with the product "-----"
+
