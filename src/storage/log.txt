@@ -64,3 +64,18 @@
 2024-01-28T10:51:23.205Z - Bot Started up!
 2024-01-28T10:51:39.100Z - Bot Started up!
 2024-01-28T10:57:39.475Z - Bot Started up!
+2024-01-28T11:51:26.908Z - Bot Started up!
+2024-01-28T11:53:25.601Z - Bot Started up!
+2024-01-28T11:53:56.437Z - mazora_ created the order #94 	 Channel ID: 1201133051678310430 
+2024-01-28T11:53:57.925Z - mazora_ created the order #95 	 Channel ID: 1201133051716059236 
+2024-01-28T11:54:13.265Z - Bot Started up!
+2024-01-28T12:14:12.296Z - Bot Started up!
+2024-01-28T13:43:16.685Z - xiaogudi created the order #96 	 Channel ID: 1201160567688278046 
+2024-01-28T15:09:49.346Z - epivhanys created the order #97 	 Channel ID: 1201182347584876574 
+2024-01-28T15:10:17.224Z - matthewo46 created the order #98 	 Channel ID: 1201182464547246171 
+2024-01-28T15:44:29.261Z - engion2_ghost_energy created the order #99 	 Channel ID: 1201191071036743751 
+2024-01-28T18:56:12.769Z - Bot Started up!
+2024-01-29T07:32:25.250Z - digo_09 created the order #100 	 Channel ID: 1201429625973256192 
+2024-01-29T18:50:15.557Z - matthewo46 created the order #101 	 Channel ID: 1201600210137256096 
+2024-01-29T19:15:14.282Z - Bot Started up!
+2024-01-29T19:19:06.262Z - space.offical created the order #103 	 Channel ID: 1201607461417799741 

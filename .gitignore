@@ -4,3 +4,5 @@ src/storage/orders.json
 src/storage/log.txt
 src/storage/log.txt
 src/asterix
+src/storage/log.txt
+*.txt
