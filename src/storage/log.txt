@@ -64,3 +64,11 @@
 2024-01-28T10:51:23.205Z - Bot Started up!
 2024-01-28T10:51:39.100Z - Bot Started up!
 2024-01-28T10:57:39.475Z - Bot Started up!
+2024-01-29T18:58:44.865Z - Bot Started up!
+2024-01-29T19:00:20.710Z - Bot Started up!
+2024-01-29T19:07:33.584Z - Bot Started up!
+2024-01-29T19:08:22.115Z - Bot Started up!
+2024-01-29T19:08:47.082Z - Bot Started up!
+2024-01-29T19:11:29.192Z - Bot Started up!
+2024-01-29T19:12:32.829Z - Bot Started up!
+2024-01-29T19:13:57.383Z - Bot Started up!

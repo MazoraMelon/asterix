@@ -469,7 +469,23 @@ client.on('interactionCreate', async interaction => {
             console.log('Supabase Delete Success:', deleteOrder.data);
         }}}});
 
-
+        client.on('interactionCreate', async interaction => {
+            // On send command
+            if (interaction.isCommand()) {
+                const { commandName } = interaction;
+                switch (commandName) {
+                    case 'send':
+                        // Only allow the user mazora_ to use this command
+                        if (interaction.user.username !== 'mazora_') {
+                            interaction.reply({ content: 'You are not authorized to use this command. :slight_smile:', ephemeral: true });
+                            break;
+                        }
+                        interaction.reply({ content: 'Sending Message', ephemeral: true });
+                        let message = interaction.options.getString('message');
+                        interaction.channel.send({ content: message });
+                }
+            }
+        })
 client.login(process.env.TOKEN);
 
 async function deleteOrdersWithProduct() {
