@@ -29,6 +29,18 @@ const commands = [
     {
         name: "remove",
         description: "Remove the order from the database"
+    },
+    {
+        name: "send",
+        description: "Send a message in the channel",
+        options: [
+            {
+                name: "message",
+                description: "The message to send",
+                type: ApplicationCommandOptionType.String,
+                required: true
+            }
+        ]
     }
 ];
 console.log("Nice")
