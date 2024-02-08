@@ -1,13 +1,13 @@
-require('dotenv').config();
-const fs = require('fs'); 
-const { Client, Events, GatewayIntentBits, ButtonBuilder, ButtonStyle, SlashCommandBuilder, ActionRowBuilder, permissionOverwrites, PermissionsBitField } = require('discord.js');
+import { config } from 'dotenv';
+config();
+import fs from 'fs';
+import { Client, Events, GatewayIntentBits, ButtonBuilder, ButtonStyle, ActionRowBuilder, PermissionsBitField } from 'discord.js';
+import { createClient } from '@supabase/supabase-js';
 
 logToFile("Bot Started up!")
 console.log('Current working directory:', process.cwd());
 //SUPABASE--------------------------------------------------------------------------------
-const { createClient } = require('@supabase/supabase-js');
-const { log } = require('console');
-const { channel } = require('diagnostics_channel');
+
 const supabaseUrl = 'https://rvydqlglkydpzfqhodsl.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
@@ -486,6 +486,32 @@ client.on('interactionCreate', async interaction => {
                 }
             }
         })
+// ----------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------AI-MODULE----------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
+// Import module
+
+import { chat } from './openai.mjs';
+
+client.on(Events.MessageCreate, async message => {
+    if (message.author.bot) return;
+    if (message.channel.id === '1205218735829418075') {
+        // This is the AI Chat
+        const channel = message.channel;
+        console.log(`Received message in ${channel.name}: ${message.content}`);
+        await channel.sendTyping();
+        try {
+            const completionMessage = await chat(message.content, channel);
+            await message.channel.send(completionMessage);
+        } catch (error) {
+            console.error('Error processing message:', error);
+            // Handle the error, such as logging or sending an error message to the channel
+            await message.channel.send('An error occurred while processing your message.');
+        }
+    }
+});
+
+
 client.login(process.env.TOKEN);
 
 async function deleteOrdersWithProduct() {
@@ -501,6 +527,3 @@ async function deleteOrdersWithProduct() {
         console.log('Supabase Delete Success:', data);
     }
 }
-
-// Call the function to delete orders with the product "-----"
-

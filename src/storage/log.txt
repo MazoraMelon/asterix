@@ -73,3 +73,16 @@
 2024-01-29T19:12:32.829Z - Bot Started up!
 2024-01-29T19:13:57.383Z - Bot Started up!
 2024-01-29T19:19:04.246Z - space.offical created the order #102 	 Channel ID: 1201607460981592105 
+2024-02-08T18:31:39.382Z - Bot Started up!
+2024-02-08T18:42:29.401Z - Bot Started up!
+2024-02-08T18:42:49.738Z - Bot Started up!
+2024-02-08T18:45:52.905Z - Bot Started up!
+2024-02-08T18:46:09.929Z - mazora_ created the order #118 	 Channel ID: 1205223059255066684 
+2024-02-08T18:47:01.361Z - Bot Started up!
+2024-02-08T18:47:19.772Z - Bot Started up!
+2024-02-08T18:48:08.191Z - Bot Started up!
+2024-02-08T18:48:49.897Z - Bot Started up!
+2024-02-08T18:51:06.098Z - Bot Started up!
+2024-02-08T18:55:18.704Z - Bot Started up!
+2024-02-08T19:00:30.133Z - Bot Started up!
+2024-02-08T19:02:49.216Z - Bot Started up!

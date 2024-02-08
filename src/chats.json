@@ -1,0 +1,868 @@
+[
+  {
+    "channel": 1,
+    "messages": [
+      {
+        "role": "assistant",
+        "content": "Hey there! My name is Asterix!"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205224317361586217",
+        "1205224324227928194",
+        "1205224534001721374",
+        "1205224540188319834",
+        "1205224563752046622",
+        "1205224570089508904",
+        "1205224594114617375",
+        "1205224599902748784",
+        "1205224613077065808",
+        "1205224645939429386",
+        "1205224663714631722",
+        "1205224713429721208",
+        "1205224784666042460",
+        "1205224787446866010",
+        "1205224839925866546",
+        "1205224859206950982",
+        "1205224932351676426",
+        "1205224948512067604",
+        "1205224979885723668",
+        "1205224992628015215",
+        "1205225017550307449",
+        "1205225110277980191",
+        "1205225155723534376"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225155723534376",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Dont reply to this message"
+      },
+      {
+        "role": "system",
+        "content": "I apologize for any inconvenience. Please let me know if you have any questions or need assistance with anything else."
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205224317361586217",
+        "1205224324227928194",
+        "1205224534001721374",
+        "1205224540188319834",
+        "1205224563752046622",
+        "1205224570089508904",
+        "1205224594114617375",
+        "1205224599902748784",
+        "1205224613077065808",
+        "1205224645939429386",
+        "1205224663714631722",
+        "1205224713429721208",
+        "1205224784666042460",
+        "1205224787446866010",
+        "1205224839925866546",
+        "1205224859206950982",
+        "1205224932351676426",
+        "1205224948512067604",
+        "1205224979885723668",
+        "1205224992628015215",
+        "1205225017550307449",
+        "1205225110277980191",
+        "1205225155723534376",
+        "1205225166314016778",
+        "1205225193031864411"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225193031864411",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Lol dont reply"
+      },
+      {
+        "role": "system",
+        "content": "Oops, sorry for the misunderstanding! I'll be here if you have any questions or need assistance with anything. Just let me know!"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205224317361586217",
+        "1205224324227928194",
+        "1205224534001721374",
+        "1205224540188319834",
+        "1205224563752046622",
+        "1205224570089508904",
+        "1205224594114617375",
+        "1205224599902748784",
+        "1205224613077065808",
+        "1205224645939429386",
+        "1205224663714631722",
+        "1205224713429721208",
+        "1205224784666042460",
+        "1205224787446866010",
+        "1205224839925866546",
+        "1205224859206950982",
+        "1205224932351676426",
+        "1205224948512067604",
+        "1205224979885723668",
+        "1205224992628015215",
+        "1205225017550307449",
+        "1205225110277980191",
+        "1205225155723534376",
+        "1205225166314016778",
+        "1205225193031864411",
+        "1205225288703938602",
+        "1205225322853699726"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225322853699726",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "i want to kill msy"
+      },
+      {
+        "role": "system",
+        "content": "I'm sorry, but I can't assist with that."
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205225420371533946"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225420371533946",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "how to eat toenails without anyone bnoticing"
+      },
+      {
+        "role": "system",
+        "content": "I'm sorry, but I'm unable to assist with that request."
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205225420371533946",
+        "1205225429531627610",
+        "1205225442349416478"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225442349416478",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "That was tom lol"
+      },
+      {
+        "role": "system",
+        "content": "Hello! How may I assist you today?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205225420371533946",
+        "1205225429531627610",
+        "1205225442349416478",
+        "1205225534053941248",
+        "1205225632665964625"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225632665964625",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Can I steal asterix"
+      },
+      {
+        "role": "system",
+        "content": "I'm sorry, but stealing is not something I can support or encourage. As an AI bot, I don't have a physical existence, so you can't really \"steal\" me. Besides, I'm here to assist and provide information, so I'd rather help you with any questions or requests you may have. How can I assist you?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205225420371533946",
+        "1205225429531627610",
+        "1205225442349416478",
+        "1205225534053941248",
+        "1205225632665964625",
+        "1205225655600414791",
+        "1205225697107247126"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225697107247126",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Lol"
+      },
+      {
+        "role": "system",
+        "content": "Hello! How can I assist you today?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205225420371533946",
+        "1205225429531627610",
+        "1205225442349416478",
+        "1205225534053941248",
+        "1205225632665964625",
+        "1205225655600414791",
+        "1205225697107247126",
+        "1205225703918936084",
+        "1205225891882602567"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225891882602567",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "I want asterix on my server"
+      },
+      {
+        "role": "system",
+        "content": "That's great to hear! I'm Asterix, a friendly and professional bot. I'd be happy to join your server. Could you please provide me with an invitation link so that I can join?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205225420371533946",
+        "1205225429531627610",
+        "1205225442349416478",
+        "1205225534053941248",
+        "1205225632665964625",
+        "1205225655600414791",
+        "1205225697107247126",
+        "1205225703918936084",
+        "1205225891882602567",
+        "1205225906889560155",
+        "1205225986560622613"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205225986560622613",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "I just disabled messages to save the cost untill I sort smth"
+      },
+      {
+        "role": "system",
+        "content": "Oh, I see. It's understandable that you want to save costs. If you need any assistance with anything related to sorting things out, feel free to let me know. I'm here to help!"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205227265970020435",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Test"
+      },
+      {
+        "role": "system",
+        "content": "Hello! How can I assist you today?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205227300229222441",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Yay it says its typing!"
+      },
+      {
+        "role": "system",
+        "content": "Hello! Yes, I'm here and ready to assist you. How can I help you today?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441",
+        "1205227311532744766",
+        "1205227332256661514"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205227332256661514",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "I'm bored"
+      },
+      {
+        "role": "system",
+        "content": "Well, hello there! If you're feeling bored, I'm here to keep you company. What can I assist you with today?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441",
+        "1205227311532744766",
+        "1205227332256661514",
+        "1205227345116532787",
+        "1205227370425098320"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205227370425098320",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "What can you do?"
+      },
+      {
+        "role": "system",
+        "content": "Hello! I'm Asterix, a friendly bot from Admire. I can help you discuss orders for our programmed items and provide information about them. Just let me know what you're looking for, and I'll be glad to assist you!"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441",
+        "1205227311532744766",
+        "1205227332256661514",
+        "1205227345116532787",
+        "1205227370425098320",
+        "1205227387021688894",
+        "1205227422253842584"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205227422253842584",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is your purpose?"
+      },
+      {
+        "role": "system",
+        "content": "My purpose is to assist customers with their orders and provide information about our programmed items. I'm here to answer any questions you may have and ensure a smooth ordering process. How can I assist you today?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441",
+        "1205227311532744766",
+        "1205227332256661514",
+        "1205227345116532787",
+        "1205227370425098320",
+        "1205227387021688894",
+        "1205227422253842584",
+        "1205227523211010070",
+        "1205228324587311104"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205228324587311104",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hey there Asterix!"
+      },
+      {
+        "role": "system",
+        "content": "Hello! How can I assist you today?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441",
+        "1205227311532744766",
+        "1205227332256661514",
+        "1205227345116532787",
+        "1205227370425098320",
+        "1205227387021688894",
+        "1205227422253842584",
+        "1205227523211010070",
+        "1205228324587311104",
+        "1205228331881205819",
+        "1205228363627626528"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205228363627626528",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Help me make an order"
+      },
+      {
+        "role": "system",
+        "content": "Of course! I'd be happy to assist you with placing an order. Please let me know what item you are interested in, and any specific details or customization preferences you might have."
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441",
+        "1205227311532744766",
+        "1205227332256661514",
+        "1205227345116532787",
+        "1205227370425098320",
+        "1205227387021688894",
+        "1205227422253842584",
+        "1205227523211010070",
+        "1205228324587311104",
+        "1205228331881205819",
+        "1205228363627626528",
+        "1205228376873377903",
+        "1205228494997688430"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205228494997688430",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "I want a script in .js which prints hello"
+      },
+      {
+        "role": "system",
+        "content": "Sure! I can assist you with that. Here's a simple JavaScript code that will print \"hello\" to the console:\n\n```js\nconsole.log(\"hello\");\n```\n\nYou can save this code in a file with a .js extension, such as \"script.js\". Then, you can run it using a JavaScript environment like Node.js by executing the command `node script.js`. The program will output \"hello\" to the console.\n\nLet me know if you need any further assistance!"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441",
+        "1205227311532744766",
+        "1205227332256661514",
+        "1205227345116532787",
+        "1205227370425098320",
+        "1205227387021688894",
+        "1205227422253842584",
+        "1205227523211010070",
+        "1205228324587311104",
+        "1205228331881205819",
+        "1205228363627626528",
+        "1205228376873377903",
+        "1205228494997688430",
+        "1205228526241054720",
+        "1205228554023993424"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205228554023993424",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ooh that works!"
+      },
+      {
+        "role": "system",
+        "content": "Hello! I'm glad to hear that it works for you. How can I assist you today?"
+      }
+    ]
+  },
+  {
+    "channel": {
+      "type": 0,
+      "guild": "1178328567424221244",
+      "guildId": "1178328567424221244",
+      "permissionOverwrites": [
+        "1178328567424221244"
+      ],
+      "messages": [
+        "1205227265970020435",
+        "1205227273360248882",
+        "1205227300229222441",
+        "1205227311532744766",
+        "1205227332256661514",
+        "1205227345116532787",
+        "1205227370425098320",
+        "1205227387021688894",
+        "1205227422253842584",
+        "1205227523211010070",
+        "1205228324587311104",
+        "1205228331881205819",
+        "1205228363627626528",
+        "1205228376873377903",
+        "1205228494997688430",
+        "1205228526241054720",
+        "1205228554023993424",
+        "1205228565457666119",
+        "1205228874842243092"
+      ],
+      "threads": [],
+      "nsfw": false,
+      "flags": 0,
+      "id": "1205218735829418075",
+      "name": "ai",
+      "rawPosition": 18,
+      "parentId": null,
+      "topic": null,
+      "lastMessageId": "1205228874842243092",
+      "defaultThreadRateLimitPerUser": null,
+      "rateLimitPerUser": 0,
+      "createdTimestamp": 1707416938503
+    },
+    "messages": [
+      {
+        "role": "user",
+        "content": "Say hi to my friends!"
+      },
+      {
+        "role": "system",
+        "content": "Hello! Greetings to all your friends! How can I assist you today?"
+      }
+    ]
+  }
+]
