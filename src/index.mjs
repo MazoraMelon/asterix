@@ -3,6 +3,8 @@ config();
 import fs from 'fs';
 import { Client, Events, GatewayIntentBits, ButtonBuilder, ButtonStyle, ActionRowBuilder, PermissionsBitField } from 'discord.js';
 import { createClient } from '@supabase/supabase-js';
+import { chat } from './openai.mjs';
+import { channel } from 'diagnostics_channel';
 
 logToFile("Bot Started up!")
 console.log('Current working directory:', process.cwd());
@@ -110,10 +112,9 @@ client.on("interactionCreate", interaction => {
 		const row = new ActionRowBuilder()
 			.addComponents(create);
 
-			interaction.reply({content: `Want to make an order or buy an ad? Click here!`, components: [row]});
+			interaction.reply({content: `Want to make an order? Click here!`, components: [row]});
 			logToFile(`${interaction.user.username} used the create order command`)
 			break;
-
 	}
 })
 //CREATE ORDER--------------------------------------------------------------------------------------------------
@@ -134,7 +135,6 @@ client.on("interactionCreate", async (interaction) => {
             channel.name = `#${data.data[0].id}-${interaction.user.username}`
 
             await channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Orders"));
-
             let orderID = data.data[0].id;
             await channel.permissionOverwrites.set([
                 {
@@ -147,6 +147,7 @@ client.on("interactionCreate", async (interaction) => {
             ]);
 
             await interaction.reply({ content: `Thanks! Your order channel is ready! ${channel}`, ephemeral: true });
+            
 
             // Add order to file
             addOrderToFile(channel.id, interaction.user.username, interaction.user.id, orderID);
@@ -154,6 +155,8 @@ client.on("interactionCreate", async (interaction) => {
 
             // Send a message in the new order chat
             await channel.send({ content: `Hi there! ${interaction.user}. Thanks for making an order! Just so you know, I store data about this order on my database!` });
+            const aiMessage = await chat("[System] Customer has made an order, can you interact with them please, reply to this message as if you are talking to the customer", channelID, user)
+            await channel.send({ content: aiMessage });
 
             // Add the user order to supabase
 
@@ -489,26 +492,37 @@ client.on('interactionCreate', async interaction => {
 // ----------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------AI-MODULE----------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------
-// Import module
-
-import { chat } from './openai.mjs';
 
 client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
+    // If the message channel category is in orders
+    if (message.channel.parentId === '1205573955029565440') {
+        await message.channel.sendTyping();
+        console.log(`Sending message ${message.content} in ${message.channel.name}`);
+        const completionMessage = await chat(message.content, message.channel.id);
+        await message.channel.send(completionMessage);
+    }
+})
+
+client.on(Events.MessageCreate, async message => {
+    if (message.author.bot) return;
+    // If message is not a reply
+    // if (!message.reference) {
+    //     return;
+    // }
     if (message.channel.id === '1205218735829418075') {
         // This is the AI Chat
         const channel = message.channel;
         console.log(`Received message in ${channel.name}: ${message.content}`);
         await channel.sendTyping();
         try {
-            const completionMessage = await chat(message.content, channel);
+            const completionMessage = await chat(message.content, channel.id, message.author.username);
             await message.channel.send(completionMessage);
         } catch (error) {
             console.error('Error processing message:', error);
             // Handle the error, such as logging or sending an error message to the channel
             await message.channel.send('An error occurred while processing your message.');
-        }
-    }
+        }    }
 });
 
 

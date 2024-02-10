@@ -86,3 +86,45 @@
 2024-02-08T18:55:18.704Z - Bot Started up!
 2024-02-08T19:00:30.133Z - Bot Started up!
 2024-02-08T19:02:49.216Z - Bot Started up!
+2024-02-08T19:15:26.791Z - Bot Started up!
+2024-02-08T19:15:51.851Z - Bot Started up!
+2024-02-09T17:51:36.704Z - Bot Started up!
+2024-02-09T17:52:29.479Z - Bot Started up!
+2024-02-09T17:53:33.974Z - Bot Started up!
+2024-02-09T17:54:30.792Z - Bot Started up!
+2024-02-09T17:54:43.391Z - Bot Started up!
+2024-02-09T17:57:16.310Z - Bot Started up!
+2024-02-09T17:59:54.218Z - mazora_ used the create order command
+2024-02-09T17:59:56.999Z - mazora_ created the order #121 	 Channel ID: 1205573819876638750 
+2024-02-09T18:00:44.362Z - mazora_ used the create order command
+2024-02-09T18:01:04.855Z - mazora_ created the order #122 	 Channel ID: 1205574104292261930 
+2024-02-09T18:06:17.550Z - Bot Started up!
+2024-02-09T18:06:21.843Z - mazora_ created the order #123 	 Channel ID: 1205575433848881184 
+2024-02-09T18:07:50.714Z - Bot Started up!
+2024-02-09T18:11:02.902Z - Bot Started up!
+2024-02-09T18:11:27.990Z - mazora_ created the order #124 	 Channel ID: 1205576717926932530 
+2024-02-09T18:13:07.382Z - Bot Started up!
+2024-02-09T18:13:19.975Z - Bot Started up!
+2024-02-09T18:13:43.497Z - Bot Started up!
+2024-02-09T18:15:17.063Z - Bot Started up!
+2024-02-09T18:15:44.374Z - Bot Started up!
+2024-02-09T18:16:04.041Z - mazora_ created the order #125 	 Channel ID: 1205577875173154867 
+2024-02-09T18:18:09.876Z - Bot Started up!
+2024-02-09T18:20:00.050Z - Bot Started up!
+2024-02-09T18:27:23.292Z - mazora_ created the order #126 	 Channel ID: 1205580723642433657 
+2024-02-09T18:29:16.005Z - Bot Started up!
+2024-02-09T18:30:38.588Z - Bot Started up!
+2024-02-09T18:32:59.190Z - Bot Started up!
+2024-02-09T18:34:37.562Z - Bot Started up!
+2024-02-09T18:35:14.370Z - Bot Started up!
+2024-02-09T18:35:29.517Z - mazora_ created the order #127 	 Channel ID: 1205582762560724993 
+2024-02-09T18:36:10.683Z - Bot Started up!
+2024-02-09T18:36:36.876Z - Bot Started up!
+2024-02-09T18:37:07.859Z - Bot Started up!
+2024-02-09T18:37:25.549Z - Bot Started up!
+2024-02-09T18:37:44.256Z - Bot Started up!
+2024-02-09T18:40:56.956Z - Bot Started up!
+2024-02-09T18:41:16.808Z - Bot Started up!
+2024-02-09T18:42:20.081Z - Bot Started up!
+2024-02-09T18:43:17.950Z - Bot Started up!
+2024-02-09T18:45:30.305Z - mazora_ created the order #128 	 Channel ID: 1205585282309816330 
