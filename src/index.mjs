@@ -546,8 +546,10 @@ client.on('interactionCreate', async interaction => {
             return;
         }
         if (interaction.customId === 'delete') {
+            console.log('Deleting channel');
             await channel.delete();
         } else if (interaction.customId === 'no') {
+            console.log('Not deleting channel');
             await interaction.reply({ content: 'Channel not deleted' });
         }
     } catch (error) {
