@@ -153,10 +153,11 @@ client.on("interactionCreate", async (interaction) => {
             addOrderToFile(channel.id, interaction.user.username, interaction.user.id, orderID);
 
 
-            // Send a message in the new order chat
+            /* Send a message in the new order chat
             await channel.send({ content: `Hi there! ${interaction.user}. Thanks for making an order! Just so you know, I store data about this order on my database!` });
             const aiMessage = await chat("[System] Customer has made an order, can you interact with them please, reply to this message as if you are talking to the customer", channelID, user)
             await channel.send({ content: aiMessage });
+            */
 
             // Add the user order to supabase
 
@@ -493,7 +494,7 @@ client.on('interactionCreate', async interaction => {
 // ---------------------------------------------------AI-MODULE----------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------
 
-client.on(Events.MessageCreate, async message => {
+/* client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
     // If the message channel category is in orders
     if (message.channel.parentId === '1205573955029565440') {
@@ -503,6 +504,7 @@ client.on(Events.MessageCreate, async message => {
         await message.channel.send(completionMessage);
     }
 })
+*/
 
 client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
@@ -523,6 +525,34 @@ client.on(Events.MessageCreate, async message => {
             // Handle the error, such as logging or sending an error message to the channel
             await message.channel.send('An error occurred while processing your message.');
         }    }
+});
+
+// ----------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------Clear Tickets----------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
+
+// Clear Tickets
+// Cycle through all of the servers channels and send am essage asking if they want the channel deleted
+// If the user says yes, delete the channel
+// If the user says no, don't delete the channel
+
+
+client.on('interactionCreate', async interaction => {
+    try {
+        if (!interaction.isButton()) return;
+        const channel = interaction.channel;
+        if (!channel) {
+            console.error('Channel is undefined');
+            return;
+        }
+        if (interaction.customId === 'delete') {
+            await channel.delete();
+        } else if (interaction.customId === 'no') {
+            await interaction.reply({ content: 'Channel not deleted' });
+        }
+    } catch (error) {
+        console.error('Error handling interaction:', error);
+    }
 });
 
 

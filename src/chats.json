@@ -214,5 +214,66 @@
         "content": "Certainly! Here's a simple example of a LuaU car script to help you get started:\n\n```lua\nlocal car = script.Parent -- Assuming the script is placed inside the car model\n\nlocal driverSeat = car:WaitForChild(\"DriverSeat\") -- The seat the player will sit in\nlocal carSpeed = 50 -- The speed at which the car will move\n\nlocal function moveCar()\n    local humanoid = driverSeat.Occupant -- Get the occupant of the driver seat\n    if humanoid then\n        local rootPart = humanoid.RootPart -- Get the RootPart of the player\n        car:SetPrimaryPartCFrame(rootPart.CFrame) -- Move the car based on player's position\n        car:SetPrimaryPartCFrame(car:GetPrimaryPartCFrame() * CFrame.new(0, 0, -carSpeed)) -- Move the car forward\n    end\nend\n\ndriverSeat:GetPropertyChangedSignal(\"Occupant\"):Connect(moveCar) -- Call move"
       }
     ]
+  },
+  {
+    "channel": "1205218735829418075",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hey there Asterix"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! How can I assist you today?"
+      },
+      {
+        "role": "user",
+        "content": "I want to buy a product"
+      },
+      {
+        "role": "assistant",
+        "content": "That's great! Could you please let me know what kind of product you are interested in?"
+      },
+      {
+        "role": "user",
+        "content": "I want a mclaren model"
+      },
+      {
+        "role": "assistant",
+        "content": "Awesome choice! Just to clarify, are you looking for a virtual McLaren model for a game like Roblox, or are you looking for a physical scale model of a McLaren car?"
+      },
+      {
+        "role": "user",
+        "content": "Roblox lol"
+      },
+      {
+        "role": "assistant",
+        "content": "Ah, got it! In that case, we can certainly help you with a Roblox McLaren model. Could you please provide me with more details about the specific McLaren model you'd like, such as the design, color, or any additional features you have in mind?"
+      },
+      {
+        "role": "user",
+        "content": "I want it orange, be able to drive and more"
+      },
+      {
+        "role": "assistant",
+        "content": "Great choice! We can definitely create a customized orange McLaren model for you in Roblox. Just to clarify, when you say \"be able to drive,\" would you like the model to have a functional driving mechanism within the game? Additionally, if there are any specific additional features or details you'd like to include, please let me know!"
+      },
+      {
+        "role": "user",
+        "content": "Can you summarise this chat for the devs and say which devs will be needed obn this chat"
+      },
+      {
+        "role": "assistant",
+        "content": "Summary: The customer wishes to purchase a customized orange McLaren model for Roblox, with the ability to drive. They would like the developers to incorporate additional features as well. \nDevelopers required: Roblox model designer, Roblox scripter."
+      },
+      {
+        "role": "user",
+        "content": "Make it json"
+      },
+      {
+        "role": "assistant",
+        "content": "Certainly! To ensure accuracy, I will need some additional information. Could you please provide me with details such as the specific features you would like to have in the JSON file for the McLaren model in Roblox? This will help our developers create the product exactly as you envision it."
+      }
+    ]
   }
 ]
