@@ -302,16 +302,16 @@ client.on("interactionCreate", async (interaction) => {
                     // Check if the first letter of the token is an underscore
                     if (token.startsWith('_')) {
                         token = token.slice(1); // Remove the underscore
-                        await interaction.channel.send(`Put this token into the payment to pay! ||${token}|| https://www.roblox.com/games/16078251436/Admire-Pay --Just so you know do not pay for orders twice, this is being worked on`);
+                        await interaction.channel.send(`Put this token into the payment to pay! ||${token}|| https://www.roblox.com/games/16078251436/Admire-Pay`);
                         await interaction.reply(` Use this token! :)`);
                     } else {
-                        await interaction.reply(`Your account has been linked so this should be easy! Enter this game as: **${token}**! https://www.roblox.com/games/16078251436/Admire-Pay --Just so you know do not pay for orders twice, this is being worked on`);
+                        await interaction.reply(`Your account has been linked so this should be easy! Enter this game as: **${token}**! https://www.roblox.com/games/16078251436/Admire-Pay`);
                     }
                 } else {
                     // User doesn't exist, insert the new data
 
                     let token = generateToken();
-                    await interaction.channel.send(`Your account token is ||${token}|| put this into the game to pay! https://www.roblox.com/games/16078251436/Admire-Pay --Just so you know do not pay for orders twice, this is being worked on`);
+                    await interaction.channel.send(`Your account token is ||${token}|| put this into the game to pay! https://www.roblox.com/games/16078251436/Admire-Pay`);
                     
 
                     const insert = await supabase
