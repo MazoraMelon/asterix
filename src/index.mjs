@@ -1,3 +1,5 @@
+// VERSION 1.0.1
+
 import { config } from 'dotenv';
 config();
 import fs from 'fs';
