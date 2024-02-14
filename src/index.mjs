@@ -6,6 +6,8 @@ import { createClient } from '@supabase/supabase-js';
 import { chat } from './openai.mjs';
 import { channel } from 'diagnostics_channel';
 
+import { getDevelopers } from './developer.mjs'; //To add a suitable dev to the order
+
 logToFile("Bot Started up!")
 console.log('Current working directory:', process.cwd());
 //SUPABASE--------------------------------------------------------------------------------
@@ -13,35 +15,6 @@ console.log('Current working directory:', process.cwd());
 const supabaseUrl = 'https://rvydqlglkydpzfqhodsl.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
-
-
-const developers = [
-    {
-        userId: '562685530790428692', // Replace with the actual Discord user ID
-        username: 'mazora_',
-        role: 'Scripter', // You can add additional information like roles
-    },
-    {
-        userId: '694054568417558541', // Replace with another Discord user ID
-        username: 'flippyy_',
-        role: 'Clothing',
-    },
-    {
-        userId: '993187573553954896', // Replace with another Discord user ID
-        username: 'ell1998123',
-        role: 'Livery',
-    },
-    {
-        userId: '1038480998876332122', // Replace with another Discord user ID
-        username: 'kylan_.',
-        role: 'Logo',
-    },
-    {
-        userId: '1114164984499421194', // Replace with another Discord user ID
-        username: 'tomextraz',
-        role: 'Modeler',
-    }
-];
 
 
 
@@ -70,29 +43,31 @@ function generateToken() {
   }
 
 async function createOrderSupabase(channel_id, customer) {
-    var price = 0
-    var currency = "⏣"
-    var priority = 3
-    var paid = false
-    var company = "acf97810-b59e-4fb1-a434-a72484b9b9d0"
-    var devs = ""
-    var details = "Details not added yet"
-    var product = "-----"
+    try {
+        var price = 0
+        var currency = "⏣"
+        var priority = 3
+        var paid = false
+        var company = "acf97810-b59e-4fb1-a434-a72484b9b9d0"
+        var devs = ""
+        var details = "Details not added yet"
+        var product = "-----"
 
-    // Add the order to supabase
-    const insert = await supabase
-        .from('orders')
-        .insert({ product, customer, price, currency, priority, paid, company, devs, details, channel_id })
-        .select();
+        // Add the order to supabase
+        const insert = await supabase
+            .from('orders')
+            .insert({ product, customer, price, currency, priority, paid, company, devs, details, channel_id })
+            .select();
 
-    if (insert.error) {
-        console.error('Supabase Insert Error:', insert.error.message);
-        logToFile(`${customer} failed to create an order due to the error: ${insert.error.message}`)
-    } else {
         console.log('Supabase Insert Success:', insert.data);
         logToFile(`${customer} created the order #${insert.data[0].id} \t Channel ID: ${channel_id} `)
+
+        return insert
+    } catch (error) {
+        console.error('Supabase Insert Error:', error.message);
+        logToFile(`${customer} failed to create an order due to the error: ${error.message}`)
+        return error
     }
-    return insert
 }
 
 client.once(Events.ClientReady, readyClient => {
@@ -148,16 +123,15 @@ client.on("interactionCreate", async (interaction) => {
 
             await interaction.reply({ content: `Thanks! Your order channel is ready! ${channel}`, ephemeral: true });
             
-
+            await channel.send({ content: `Hi there! ${interaction.user}. Thanks for making an order! Just so you know, I store data about this order on my database!` });
+            // const aiMessage = await chat("[System] Customer has made an order, You are now interacting with the customer. Ask them what they are looking for and about their order", channelID, user)
+            await channel.send({ content: aiMessage });
             // Add order to file
             addOrderToFile(channel.id, interaction.user.username, interaction.user.id, orderID);
 
 
-            /* Send a message in the new order chat
-            await channel.send({ content: `Hi there! ${interaction.user}. Thanks for making an order! Just so you know, I store data about this order on my database!` });
-            const aiMessage = await chat("[System] Customer has made an order, can you interact with them please, reply to this message as if you are talking to the customer", channelID, user)
-            await channel.send({ content: aiMessage });
-            */
+            /* Send a message in the new order chat */
+            
 
             // Add the user order to supabase
 
@@ -168,36 +142,7 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 //Message in order channel
-async function setupOrder(channel) {
-    const script = new ButtonBuilder()
-        .setCustomId('scriptbutton')
-        .setLabel('Script')
-        .setStyle(ButtonStyle.Primary);
-    const model = new ButtonBuilder()
-        .setCustomId('modelbutton')
-        .setLabel('Model')
-        .setStyle(ButtonStyle.Primary);
-    const clothing = new ButtonBuilder()
-        .setCustomId('clothingbutton')
-        .setLabel('Clothing')
-        .setStyle(ButtonStyle.Primary);
-    const livery = new ButtonBuilder()
-        .setCustomId('liverybutton')
-        .setLabel('Livery')
-        .setStyle(ButtonStyle.Primary);
-    const logo = new ButtonBuilder()
-        .setCustomId('logobutton')
-        .setLabel('Logo')
-        .setStyle(ButtonStyle.Primary);
 
-    // Limit the number of components in a single row
-    const row = new ActionRowBuilder()
-        .addComponents(script, model, clothing, livery, logo); // Adjust as needed
-
-    // Send a message in the channel
-    await channel.send({ content: 'What type of order is this?', components: [row] });
-    await channel.send("If you are looking for something else like an advert ignore this message")
-}
 // Check if they have been pressed
 client.on("interactionCreate", async (interaction) => {
     // Check if the buttons from setup have been pressed
@@ -208,23 +153,23 @@ client.on("interactionCreate", async (interaction) => {
             case "scriptbutton":
                 // Name the channel "Script"
                 await interaction.channel.setName(`${interaction.user.username}-script`);
-                addDeveloper(interaction.channel, "Scripter");
+                addDeveloper(interaction.channel, "Scripter", interaction);
                 break;
             case "modelbutton":
                 await interaction.channel.setName(`${interaction.user.username}-model`); 
-                addDeveloper(interaction.channel, "Modeler");
+                addDeveloper(interaction.channel, "Modeler", interaction);
                 break;
             case "clothingbutton":
                 await interaction.channel.setName(`${interaction.user.username}-clothing`); 
-                addDeveloper(interaction.channel, "Clothing");
+                addDeveloper(interaction.channel, "Clothing", interaction);
                 break;
             case "liverybutton":
                 await interaction.channel.setName(`${interaction.user.username}-livery`); 
-                addDeveloper(interaction.channel, "Livery");
+                addDeveloper(interaction.channel, "Liveries", interaction);
                 break;
             case "logobutton":
                 await interaction.channel.setName(`${interaction.user.username}-logo`); 
-                addDeveloper(interaction.channel, "Logo");
+                addDeveloper(interaction.channel, "Logo", interaction);
                 break;
             default:
                 break;
@@ -232,32 +177,20 @@ client.on("interactionCreate", async (interaction) => {
     }
 });
 
-async function addDeveloper(channel, type) {
-    const developer = developers.find(dev => dev.role === type);
+async function addDeveloper(channel, type, interaction) {
+    let devID = await getDevelopers(type);
+    // String the devid
+    devID = devID.toString(); 
+    console.log(devID)
+    const developer = client.users.cache.get(devID);
+
     if (!developer) {
-        console.log(`No developer found with type ${type}`);
-        return;
+     console.error(`Developer ${devID} not found`);
+    } else {
+        await interaction.reply({ content: `This order has been sent to ${developer}!`, ephemeral: true });
     }
-
-    console.log(`Adding ${developer.username} to ${channel.name}`);
-
-    try {
-        const developerDiscord = await client.users.fetch(developer.userId);
-        console.log(`Fetched user: ${developerDiscord.username} (${developerDiscord.id})`);
-        await channel.permissionOverwrites.edit([
-            {
-                id: developerDiscord,
-                allow: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
-            },
-        ]);
-        channel.send(`Hi ${developer.username}! You have been added to the ${type} channel!`);
-    } catch (error) {
-        console.error('Error fetching user:', error);
-    }
+    console.log(developer);
 }
-
-
-// Find out order type
 
 
 
@@ -318,24 +251,34 @@ client.on("interactionCreate", async (interaction) => {
 
         switch (commandName) {
             case "charge":
+            // interaction.reply("This feature isn't ready just yet");
+            // break;
+            // Check the channels user using src/storage/orders.json
+            
+            // Update the price of the order in supabase
 
-            interaction.reply("This feature isn't ready just yet");
-            break;
-                // Check the user roles
-                if (!interaction.member.roles.cache.some(role => role.name === "Founder")) {
-                    await interaction.reply({ content: "You do not have permission to use this command.",  ephemeral: true });
+            // Get price from command options
+
+            let price = interaction.options.getNumber('amount');
+
+                if (price < 0 || price > 200) {
+                    interaction.reply("The price of your order must be between 0 and 200. And must be incemented by 10. Contact mazora_ for a custom price");
                     break;
                 }
-            // Check the channels user using src/storage/orders.json
-            var userid = await findUserByChannelId(interaction.channelId);
 
-            if (userid === null) {
+            try {
+                const data = await supabase
+                .from('orders')
+                .update({ price:  price })
+                .eq('channel_id', interaction.channelId)
+                .select();
+                console.log('Supabase Payment Update Success:', data);
+                var username = data.data[0].customer
+            } catch (error) {
+                console.error('Supabase Update Error:', error.message);
                 await interaction.reply({ content: "This command was used in an invalid channel.", ephemeral: true });
-                console.log("Null")
-                break;
             }
-            userid = await client.users.fetch(userid);
-            username = userid.username;
+            // Get ht
                 // Check if the user already exists in the 'customers' table
                 const existingUserData = await supabase
                     .from('customers')
@@ -353,22 +296,20 @@ client.on("interactionCreate", async (interaction) => {
                     console.log(existingUserData.data[0].token);
                     let token = existingUserData.data[0].token;
 
-                    console.log(userid.username)
+
                     // Check if the first letter of the token is an underscore
                     if (token.startsWith('_')) {
-
                         token = token.slice(1); // Remove the underscore
-                        await userid.send(`Put this token into the payment to pay! ||${token}|| https://www.roblox.com/games/16078251436/Admire-Pay`);
-                        await interaction.reply(` The user has recieved their payment token, please do not share it! :)`);
+                        await interaction.channel.send(`Put this token into the payment to pay! ||${token}|| https://www.roblox.com/games/16078251436/Admire-Pay --Just so you know do not pay for orders twice, this is being worked on`);
+                        await interaction.reply(` Use this token! :)`);
                     } else {
-                        await interaction.reply(`Your account has been linked so this should be easy! Enter this game as: **${token}**! https://www.roblox.com/games/16078251436/Admire-Pay`);
+                        await interaction.reply(`Your account has been linked so this should be easy! Enter this game as: **${token}**! https://www.roblox.com/games/16078251436/Admire-Pay --Just so you know do not pay for orders twice, this is being worked on`);
                     }
                 } else {
                     // User doesn't exist, insert the new data
 
                     let token = generateToken();
-                    await userid.send(`Your account token is ||${token}|| put this into the game to pay! https://www.roblox.com/games/16078251436/Admire-Pay`);
-                    await interaction.reply(` The customer for this order has recieved a DM of their token, please do not share it! :) https://www.roblox.com/games/16078251436/Admire-Pay`);
+                    await interaction.channel.send(`Your account token is ||${token}|| put this into the game to pay! https://www.roblox.com/games/16078251436/Admire-Pay --Just so you know do not pay for orders twice, this is being worked on`);
                     
 
                     const insert = await supabase
@@ -450,61 +391,55 @@ client.on('interactionCreate', async interaction => {
 
             const username = "mazora_"; // Replace with the actual username
 
-            // Check if the user executing the command is "mazora_"
-            if (interaction.user.username !== username) {
-                await interaction.reply({ content: 'You are not authorized to use this command.', ephemeral: true });
-                return; // Exit the function if the user is not "mazora_"
-            }
 
             console.log(`Removing order from ${interaction.channelId}`);
         const channel_id = interaction.channelId;
-        const orderID = findOrderIDByChannelId(channel_id);
-        interaction.reply({ content: 'Order removing', ephemeral: true });
         // Delete from supabase
         const deleteOrder = await supabase
             .from('orders')
             .delete()
-            .eq('id', orderID)
+            .eq('channel_id', channel_id)
             .select();
 
         if (deleteOrder.error) {
             console.error('Supabase Delete Error:', deleteOrder.error.message);
+            interaction.reply({ content: 'Faild to remove order from database.', ephemeral: false });
         } else {
             console.log('Supabase Delete Success:', deleteOrder.data);
-        }}}});
+            interaction.reply({ content: 'Order was successfully removed from database.', ephemeral: false });
+}}}});
 
-        client.on('interactionCreate', async interaction => {
-            // On send command
-            if (interaction.isCommand()) {
-                const { commandName } = interaction;
-                switch (commandName) {
-                    case 'send':
-                        // Only allow the user mazora_ to use this command
-                        if (interaction.user.username !== 'mazora_') {
-                            interaction.reply({ content: 'You are not authorized to use this command. :slight_smile:', ephemeral: true });
-                            break;
-                        }
-                        interaction.reply({ content: 'Sending Message', ephemeral: true });
-                        let message = interaction.options.getString('message');
-                        interaction.channel.send({ content: message });
+client.on('interactionCreate', async interaction => {
+    // On send command
+    if (interaction.isCommand()) {
+        const { commandName } = interaction;
+        switch (commandName) {
+            case 'send':
+                // Only allow the user mazora_ to use this command
+                if (interaction.user.username !== 'mazora_') {
+                    interaction.reply({ content: 'You are not authorized to use this command. :slight_smile:', ephemeral: true });
+                    break;
                 }
-            }
-        })
+                interaction.reply({ content: 'Sending Message', ephemeral: true });
+                let message = interaction.options.getString('message');
+                interaction.channel.send({ content: message });
+        }
+    }
+})
 // ----------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------AI-MODULE----------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------
-
-/* client.on(Events.MessageCreate, async message => {
+ client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
-    // If the message channel category is in orders
-    if (message.channel.parentId === '1205573955029565440') {
+    
+
+    if (message.channel.parentId === '1196534179605794887') {
         await message.channel.sendTyping();
         console.log(`Sending message ${message.content} in ${message.channel.name}`);
-        const completionMessage = await chat(message.content, message.channel.id);
+        // const completionMessage = await chat(message.content, message.channel.id);
         await message.channel.send(completionMessage);
     }
 })
-*/
 
 client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
@@ -512,13 +447,16 @@ client.on(Events.MessageCreate, async message => {
     // if (!message.reference) {
     //     return;
     // }
+    console.log(`Sending message ${message.content} in ${message.channel.name}`);
     if (message.channel.id === '1205218735829418075') {
         // This is the AI Chat
+        let messageContent = await message.content;
         const channel = message.channel;
         console.log(`Received message in ${channel.name}: ${message.content}`);
         await channel.sendTyping();
         try {
-            const completionMessage = await chat(message.content, channel.id, message.author.username);
+            // const completionMessage = await chat(messageContent, channel.id, message.author.username); 
+            console.log(`Completion message: ${completionMessage}`);
             await message.channel.send(completionMessage);
         } catch (error) {
             console.error('Error processing message:', error);
@@ -527,6 +465,65 @@ client.on(Events.MessageCreate, async message => {
         }    }
 });
 
+// ----------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------Developer Module----------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
+
+client.on(Events.InteractionCreate, async interaction => {
+    switch (interaction.commandName) {
+        case 'developer':
+            console.log(`Developer button pressed in ${interaction.channel.name}`);
+            await interaction.reply({
+                content: 'What type of order is this??',
+                components: [
+                    new ActionRowBuilder()
+                        .addComponents(
+                            new ButtonBuilder()
+                                .setCustomId('scriptbutton')
+                                .setLabel('Scripter')
+                                .setStyle(ButtonStyle.Primary),
+                            new ButtonBuilder()
+                                .setCustomId('modelbutton')
+                                .setLabel('Modeler')
+                                .setStyle(ButtonStyle.Primary),
+                            new ButtonBuilder()
+                                .setCustomId('clothingbutton')
+                                .setLabel('Clothing')
+                                .setStyle(ButtonStyle.Primary),
+                            new ButtonBuilder()
+                                .setCustomId('liverybutton')
+                                .setLabel('Liveries')
+                                .setStyle(ButtonStyle.Primary),
+                            new ButtonBuilder()
+                                .setCustomId('otherbutton')
+                                .setLabel('Other')
+                                .setStyle(ButtonStyle.Primary),
+                        ),
+            ],
+        })
+    }
+})
+
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isButton()) return;
+    switch (interaction.customId) {
+        case 'scriptbutton':
+            console.log('Scripter button pressed');
+            break;
+        case 'modelbutton':
+            console.log('Modeler button pressed');
+            break;
+        case 'clothingbutton':
+            console.log('Clothing button pressed');
+            break;
+        case 'liverybutton':
+            console.log('Livery button pressed');
+            break;
+        case 'otherbutton':
+            console.log('Other button pressed');
+            break;
+    }
+})
 // ----------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------Clear Tickets----------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------
