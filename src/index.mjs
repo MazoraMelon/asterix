@@ -127,7 +127,7 @@ client.on("interactionCreate", async (interaction) => {
             
             await channel.send({ content: `Hi there! ${interaction.user}. Thanks for making an order! Just so you know, I store data about this order on my database!` });
             // const aiMessage = await chat("[System] Customer has made an order, You are now interacting with the customer. Ask them what they are looking for and about their order", channelID, user)
-            await channel.send({ content: aiMessage });
+            // await channel.send({ content: aiMessage });
             // Add order to file
             addOrderToFile(channel.id, interaction.user.username, interaction.user.id, orderID);
 
