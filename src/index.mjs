@@ -208,7 +208,18 @@ client.on("interactionCreate", async (interaction) => {
 
         switch (commandName) {
             case "close":
-                var userid = await findUserByChannelId(interaction.channelId);
+              try {
+                let data = await supabase
+                .from('orders')
+                .select()
+                .eq('channel_id', interaction.channelId)
+                .single();
+                
+                var userid = data.data.customer
+                console.log(userid)
+              } catch (error) {
+                console.error('Supabase Select Error:', error.message);
+              }
                 // Perms
                 if (!interaction.member.roles.cache.some(role => role.name === "Developer")) {
                     await interaction.reply({ content:"You do not have permission to use this command", ephemeral: true });
@@ -219,20 +230,21 @@ client.on("interactionCreate", async (interaction) => {
                     await interaction.reply({ content: "Command used in an invalid channel",  ephemeral: true });
                     break;
                 }
-                userid = await client.users.fetch(userid);
+                // userid = await client.users.fetch(userid);
                 const channel = await interaction.guild.channels.fetch(interaction.channelId);
                 await interaction.reply("This order has been closed!")
                 await channel.permissionOverwrites.set([
                     {
                         id: interaction.guild.roles.everyone.id,
                         deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
-                    }, {
-                        id: userid.id,
-                        deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
                     },
+                    // {
+                    //     id: userid.id,
+                    //     deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
+                    // },
                     
                 ]);
-                await userid.send("Your order has been closed! Thanks for working with us!");
+                // await userid.send("Your order has been closed! Thanks for working with us!");
                 channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Archive"));
                 break;
 
