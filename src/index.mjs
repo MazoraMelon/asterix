@@ -431,15 +431,18 @@ client.on('interactionCreate', async interaction => {
 // ----------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------AI-MODULE----------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------
- client.on(Events.MessageCreate, async message => {
+client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
-    
 
     if (message.channel.parentId === '1196534179605794887') {
-        await message.channel.sendTyping();
-        console.log(`Sending message ${message.content} in ${message.channel.name}`);
-        // const completionMessage = await chat(message.content, message.channel.id);
-        await message.channel.send(completionMessage);
+        try {
+            // await message.channel.sendTyping();
+            // console.log(`Sending message ${message.content} in ${message.channel.name}`);
+            // const completionMessage = await chat(message.content, message.channel.id);
+            // await message.channel.send(completionMessage);
+        } catch (error) {
+            console.error('Error occurred:', error.message);
+        }
     }
 })
 
