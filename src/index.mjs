@@ -214,7 +214,30 @@ client.on("interactionCreate", async (interaction) => {
                 .select()
                 .eq('channel_id', interaction.channelId)
                 .single();
-                
+            
+                if (data.data === null) {
+                    console.log("Used in a non order")
+                    if (interaction.channel.parent.name === "Orders") {
+                        const channel = await interaction.guild.channels.fetch(interaction.channelId);
+                        await interaction.reply("This order has been closed!")
+                        await channel.permissionOverwrites.set([
+                            {
+                                id: interaction.guild.roles.everyone.id,
+                                deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
+                            },
+                            // {
+                            //     id: userid.id,
+                            //     deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
+                            // },
+                            
+                        ]);
+                        // await userid.send("Your order has been closed! Thanks for working with us!");
+                        channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Archive"));
+                    } else {
+                        await interaction.reply({ content:"This is not an order channel", ephemeral: true });
+                    }
+                    break;
+                }
                 var userid = data.data.customer
                 console.log(userid)
               } catch (error) {
@@ -226,10 +249,6 @@ client.on("interactionCreate", async (interaction) => {
                     break;
                 }
 
-                if (!userid) {
-                    await interaction.reply({ content: "Command used in an invalid channel",  ephemeral: true });
-                    break;
-                }
                 // userid = await client.users.fetch(userid);
                 const channel = await interaction.guild.channels.fetch(interaction.channelId);
                 await interaction.reply("This order has been closed!")
