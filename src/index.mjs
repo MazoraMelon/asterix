@@ -331,27 +331,6 @@ client.on("interactionCreate", async (interaction) => {
                 }
 
 
-                let i;
-                console.log(existingUserData.data);
-                for (i = 0; i < existingUserData.data.length; i++) {
-                    console.log(existingUserData.data[i].discordid);
-                    if (existingUserData.data[i].discordid == username) {
-
-                        
-
-                        var username = existingUserData.data[i].name;
-
-                        var user = await client.users.fetch(username);
-                        console.log(user)
-                        console.log(user.id)
-
-                        username = existingUserData.data[i].name;
-                        break;
-                    } else {
-                        console.log("Username doesn't exist");
-                    }
-                }
-
                 if (existingUserData.data && existingUserData.data.length > 0) {
                     // User already exists, handle accordingly
                     console.log('User already exists in the table:', existingUserData.data);
@@ -495,6 +474,9 @@ client.on('interactionCreate', async interaction => {
 client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
 
+
+        fs.appendFileSync('src/storage/messages.txt', `${message.channel.name}- ${message.timecreated}- ${message.author.username}: ${message.content}\n`);
+
     if (message.content == "!file") {
         const attachment = new AttachmentBuilder('./src/img/Stripe.png', { name: 'Stripe.png' });
         await message.channel.send({ files: [attachment]})
@@ -511,6 +493,11 @@ client.on(Events.MessageCreate, async message => {
             console.error('Error occurred:', error.message);
         }
     }
+})
+
+client.on(Events.MessageUpdate, async (oldmessage, newmessage) => {
+    if (oldmessage.author.bot) return;
+    fs.appendFileSync('src/storage/messages.txt', `${newmessage.channel.name}- ${newmessage.timecreated}- "${oldmessage}" was edited to "${newmessage}" by ${newmessage.author.username}`);
 })
 
 client.on(Events.MessageCreate, async message => {
