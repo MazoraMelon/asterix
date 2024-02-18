@@ -224,7 +224,8 @@ client.on("interactionCreate", async (interaction) => {
                     if (interaction.channel.parent.name === "Orders") {
                         const channel = await interaction.guild.channels.fetch(interaction.channelId);
                         const attachment = new AttachmentBuilder('./src/img/Stripe.png', { name: 'Stripe.png' });
-                        await interaction.reply({ content: "This order has been closed!", files: [attachment]})
+                        await interaction.reply({ content: "This order has been closed!"})
+                        await interaction.channel.send( { files: [attachment] })
                         await channel.permissionOverwrites.set([
                             {
                                 id: interaction.guild.roles.everyone.id,
