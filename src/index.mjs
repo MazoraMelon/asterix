@@ -3,7 +3,7 @@
 import { config } from 'dotenv';
 config();
 import fs from 'fs';
-import { Client, Events, GatewayIntentBits, ButtonBuilder, ButtonStyle, ActionRowBuilder, PermissionsBitField } from 'discord.js';
+import { Client, Events, GatewayIntentBits, ButtonBuilder, ButtonStyle, ActionRowBuilder, AttachmentBuilder, PermissionsBitField, GuildMemberManager } from 'discord.js';
 import { createClient } from '@supabase/supabase-js';
 import { chat } from './openai.mjs';
 import { channel } from 'diagnostics_channel';
@@ -13,6 +13,8 @@ import { getDevelopers } from './developer.mjs'; //To add a suitable dev to the 
 logToFile("Bot Started up!")
 console.log('Current working directory:', process.cwd());
 //SUPABASE--------------------------------------------------------------------------------
+
+
 
 const supabaseUrl = 'https://rvydqlglkydpzfqhodsl.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
@@ -30,6 +32,7 @@ const client = new Client({
 	] 
 	
 });
+
 
 function generateToken() {
     let stringVars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567980';
@@ -72,8 +75,12 @@ async function createOrderSupabase(channel_id, customer) {
     }
 }
 
+
+
 client.once(Events.ClientReady, readyClient => {
 	console.log(`${readyClient.user.tag} is online!`);
+    var horizon = client.guilds.cache.get("1175179078110826607")
+    client.user.setActivity({ name: 'over the Horizon', type: 3 });
 });
 client.on("interactionCreate", interaction => {
 	if(!interaction.isChatInputCommand()) return;
@@ -196,9 +203,6 @@ async function addDeveloper(channel, type, interaction) {
 
 
 
-
-
-
 //ORDER CLOSE----------------------------------------------------------------------------------------------------
 client.on("interactionCreate", async (interaction) => {
     if (interaction.isCommand()) {
@@ -219,7 +223,8 @@ client.on("interactionCreate", async (interaction) => {
                     console.log("Used in a non order")
                     if (interaction.channel.parent.name === "Orders") {
                         const channel = await interaction.guild.channels.fetch(interaction.channelId);
-                        await interaction.reply("This order has been closed!")
+                        const attachment = new AttachmentBuilder('./src/img/Stripe.png', { name: 'Stripe.png' });
+                        await interaction.reply({ content: "This order has been closed!", files: [attachment]})
                         await channel.permissionOverwrites.set([
                             {
                                 id: interaction.guild.roles.everyone.id,
@@ -235,6 +240,7 @@ client.on("interactionCreate", async (interaction) => {
                         channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Archive"));
                     } else {
                         await interaction.reply({ content:"This is not an order channel", ephemeral: true });
+                        logToFile(`${interaction.user.username} tried to close an order in an invalid channel \t ${interaction.channel.name}`)
                     }
                     break;
                 }
@@ -252,6 +258,7 @@ client.on("interactionCreate", async (interaction) => {
                 // userid = await client.users.fetch(userid);
                 const channel = await interaction.guild.channels.fetch(interaction.channelId);
                 await interaction.reply("This order has been closed!")
+                logToFile(`${userid} closed the order \t Channel ID: ${interaction.channelId} `)
                 await channel.permissionOverwrites.set([
                     {
                         id: interaction.guild.roles.everyone.id,
@@ -273,7 +280,6 @@ client.on("interactionCreate", async (interaction) => {
         }
     }
 });
-
 
 
 
@@ -323,6 +329,28 @@ client.on("interactionCreate", async (interaction) => {
                     return;
                 }
 
+
+                let i;
+                console.log(existingUserData.data);
+                for (i = 0; i < existingUserData.data.length; i++) {
+                    console.log(existingUserData.data[i].discordid);
+                    if (existingUserData.data[i].discordid == username) {
+
+                        
+
+                        var username = existingUserData.data[i].name;
+
+                        var user = await client.users.fetch(username);
+                        console.log(user)
+                        console.log(user.id)
+
+                        username = existingUserData.data[i].name;
+                        break;
+                    } else {
+                        console.log("Username doesn't exist");
+                    }
+                }
+
                 if (existingUserData.data && existingUserData.data.length > 0) {
                     // User already exists, handle accordingly
                     console.log('User already exists in the table:', existingUserData.data);
@@ -355,6 +383,7 @@ client.on("interactionCreate", async (interaction) => {
                     } else {
                         console.log('Supabase Insert Success:', insert.data);
                     }
+                    logToFile(`A payment request was made by ${interaction.user.username} \t Channel ID: ${interaction.channel.id} ${interaction.channel.name}`)
                 }
                 break;
         }
@@ -464,6 +493,12 @@ client.on('interactionCreate', async interaction => {
 // ----------------------------------------------------------------------------------------------------------------------
 client.on(Events.MessageCreate, async message => {
     if (message.author.bot) return;
+
+    if (message.content == "!file") {
+        const attachment = new AttachmentBuilder('./src/img/Stripe.png', { name: 'Stripe.png' });
+        await message.channel.send({ files: [attachment]})
+        message.delete();
+    }
 
     if (message.channel.parentId === '1196534179605794887') {
         try {
@@ -589,6 +624,10 @@ client.on('interactionCreate', async interaction => {
         console.error('Error handling interaction:', error);
     }
 });
+
+function getUserFromID(id) {
+    return client.users.cache.get(id);
+}
 
 
 client.login(process.env.TOKEN);
