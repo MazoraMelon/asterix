@@ -4,11 +4,11 @@ const { REST, Routes, ApplicationCommandOptionType } = require('discord.js');
 const commands = [
     {
         name: "order",
-        description: "Creates an order chat with the devs of Undersea"
+        description: "Create an order with the Horizon team"
     },
     {
         name: "close",
-        description: "Close your order chat with the devs of Undersea"
+        description: "Close an order with the Horizon team"
     },
     {
         name: "developer",
@@ -16,7 +16,7 @@ const commands = [
     },
     {
         name: "charge",
-        description: "Charge the customer for the current order",
+        description: "Charge the customer using Horizon Pay",
         options: [
             {
                 name: "amount",
@@ -28,7 +28,7 @@ const commands = [
     },
     {
         name: "remove",
-        description: "Remove the order from the database"
+        description: "Remove the order from the Horizon database"
     },
     {
         name: "send",
