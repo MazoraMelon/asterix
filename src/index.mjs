@@ -107,20 +107,20 @@ client.on("interactionCreate", async (interaction) => {
 
     switch (interaction.customId) {
         case "create":
-            // Create a new channel
-            const channel = await interaction.guild.channels.create({
+            // Create a new orderchannel
+            const orderchannel = await interaction.guild.channels.create({
                 name: `order-${interaction.user.username}`,
                 type: 0,
             });
-            let channelID = channel.id;
+            let channelID = orderchannel.id;
             let user = interaction.user.username;
             let data = await createOrderSupabase(channelID, user);
 
-            channel.name = `#${data.data[0].id}-${interaction.user.username}`
+            orderchannel.name = `#${data.data[0].id}-${interaction.user.username}`
 
-            await channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Orders"));
+            await orderchannel.setParent(interaction.guild.channels.cache.find(orderchannel => orderchannel.name === "Orders"));
             let orderID = data.data[0].id;
-            await channel.permissionOverwrites.set([
+            await orderchannel.permissionOverwrites.set([
                 {
                     id: interaction.guild.roles.everyone.id,
                     deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
@@ -130,9 +130,9 @@ client.on("interactionCreate", async (interaction) => {
                 },
             ]);
 
-            await interaction.reply({ content: `Thanks! Your order channel is ready! ${channel}`, ephemeral: true });
+            await interaction.reply({ content: `Thanks! Your order channel is ready! ${orderchannel}`, ephemeral: true });
             
-            await channel.send({ content: `Hi there! ${interaction.user}. Thanks for making an order! Just so you know, I store data about this order on my database!` });
+            await orderchannel.send({ content: `Hi there! ${interaction.user}. Thanks for making an order! Just so you know, I store data about this order on my database!` });
             // const aiMessage = await chat("[System] Customer has made an order, You are now interacting with the customer. Ask them what they are looking for and about their order", channelID, user)
             // await channel.send({ content: aiMessage });
             // Add order to file
@@ -646,7 +646,7 @@ client.on(Events.InteractionCreate, async interaction => {
         if (interaction.isCommand() && interaction.commandName === 'closesupport') {
             const channel = interaction.channel;
             if (channel.parentId === interaction.guild.channels.cache.find(channel => channel.name === "Support").id) {
-                interaction.reply({ content: 'Closing the channel...', ephemeral: false });
+                interaction.reply({ content: 'Closing the channel...', ephemeral: false  });
                 channel.delete();
             } else {
                 interaction.reply({ content: 'This is not a support channel.', ephemeral: true });
