@@ -291,14 +291,6 @@ client.on("interactionCreate", async (interaction) => {
 
         switch (commandName) {
             case "charge":
-            // interaction.reply("This feature isn't ready just yet");
-            // break;
-            // Check the channels user using src/storage/orders.json
-            
-            // Update the price of the order in supabase
-
-            // Get price from command options
-
             let price = interaction.options.getNumber('amount');
 
                 if (price < 0 || price > 200) {
@@ -617,6 +609,33 @@ client.on('interactionCreate', async interaction => {
 function getUserFromID(id) {
     return client.users.cache.get(id);
 }
+
+
+// --------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------Support System---------------------------------------------------------
+
+client.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isButton()) return;
+    switch (interaction.customId) {
+        case 'support':
+
+            const channel = await interaction.guild.channels.create(`support-${interaction.user.username}`, { type: 0 });
+            await channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Support"));
+            await channel.permissionOverwrites.set([
+                {
+                    id: interaction.guild.roles.everyone.id,
+                    deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
+                }, {
+                    id: interaction.user.id,
+                    allow: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
+                },
+            ]);
+
+            await interaction.reply({ content: `Nice, we are all set, your support channel is here: ${channel}`, ephemeral: true });
+            
+            await channel.send({ content: `Hey there, ${interaction.user}, welcome to our support section, our team will get to you as soon as possible` });
+    }});
+
 
 
 client.login(process.env.TOKEN);
