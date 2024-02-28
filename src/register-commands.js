@@ -27,6 +27,10 @@ const commands = [
         ]
     },
     {
+        name: "closesupport",
+        description: "Close a support ticket"
+    },
+    {
         name: "remove",
         description: "Remove the order from the Horizon database"
     },

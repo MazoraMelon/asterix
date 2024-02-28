@@ -212,6 +212,7 @@ client.on("interactionCreate", async (interaction) => {
 
         switch (commandName) {
             case "close":
+                
               try {
                 let data = await supabase
                 .from('orders')
@@ -619,23 +620,40 @@ client.on(Events.InteractionCreate, async interaction => {
     switch (interaction.customId) {
         case 'support':
 
-            const channel = await interaction.guild.channels.create(`support-${interaction.user.username}`, { type: 0 });
-            await channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Support"));
-            await channel.permissionOverwrites.set([
-                {
-                    id: interaction.guild.roles.everyone.id,
-                    deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
-                }, {
-                    id: interaction.user.id,
-                    allow: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
-                },
-            ]);
+        const channel = await interaction.guild.channels.create({
+            name: `support-${interaction.user.username}`,
+            type: 0,
+        });
 
-            await interaction.reply({ content: `Nice, we are all set, your support channel is here: ${channel}`, ephemeral: true });
-            
-            await channel.send({ content: `Hey there, ${interaction.user}, welcome to our support section, our team will get to you as soon as possible` });
+        await channel.setParent(interaction.guild.channels.cache.find(channel => channel.name === "Support"));
+        await channel.permissionOverwrites.set([
+            {
+                id: interaction.guild.roles.everyone.id,
+                deny: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
+            }, {
+                id: interaction.user.id,
+                allow: [PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ViewChannel],
+            },
+        ]);
+
+        interaction.reply( { content: `Nice, I have set up your support channel for you :slight_smile: ${channel}`, ephemeral: true } );
+        channel.send(`Hey there ${interaction.user}! I've set up this support channel for you :slight_smile: our team will get to you when free`)
     }});
 
+
+    client.on(Events.InteractionCreate, async interaction => {
+        // closesupport command
+        if (interaction.isCommand() && interaction.commandName === 'closesupport') {
+            const channel = interaction.channel;
+            if (channel.parentId === interaction.guild.channels.cache.find(channel => channel.name === "Support").id) {
+                interaction.reply({ content: 'Closing the channel...', ephemeral: false });
+                channel.delete();
+            } else {
+                interaction.reply({ content: 'This is not a support channel.', ephemeral: true });
+            }
+        }
+
+    })
 
 
 client.login(process.env.TOKEN);
